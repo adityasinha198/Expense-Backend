@@ -28,6 +28,13 @@ exports.postSignUp=(req,res,next)=>{
       });
       
   };
+
+  exports.login = (req,res,next) => {
     
+    const email = req.body.emailid;
+    const password = req.body.password;
+    console.log(email,password)
+  }
+     
     
     
