@@ -34,6 +34,30 @@ exports.postSignUp=(req,res,next)=>{
     const email = req.body.emailid;
     const password = req.body.password;
     console.log(email,password)
+    
+    Expenseuser.findAll({where:{email:email}})
+    .then(user=>{
+      
+      if (password == user[0].password){
+        //console.log(password)
+        return res.status(200).json({success:true, message:'User logged in'}) 
+  
+      }
+      else if(password != user[0].password){
+        return res.status(401).json({success:false, message:'User not authorised'}) 
+        
+
+
+      }
+
+
+      
+  })
+  
+  .catch(err => {
+    return res.status(404).json({success:false, message:'User not found'})
+    
+  })
   }
      
     
