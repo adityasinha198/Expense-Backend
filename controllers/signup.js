@@ -1,4 +1,33 @@
+const Expenseuser = require("../models/expenseuser")
+
+
 exports.postSignUp=(req,res,next)=>{
-    console.log(req.body.name)
     
-    }
+    const username = req.body.name;
+    const email = req.body.emailid;
+    const password = req.body.password;
+    Expenseuser.findByPk(email).then(user=>{
+      console.log('user exists');
+      return res.status(404).json({success:false, message:'User Already exists'}) 
+  })
+    //console.log(name,email,price)
+    //const description = req.body.description;
+    Expenseuser
+    .create({
+        username: username,
+        email: email,
+        password: password,
+        
+      })
+      .then(result => {
+    
+        console.log('Created ExpenseUser');
+    })
+      .catch(err => {
+        console.log(err);
+      });
+      
+  };
+    
+    
+    
