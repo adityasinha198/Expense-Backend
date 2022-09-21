@@ -12,8 +12,10 @@ app.use(cors())
 
 const sequelize = require('./util/database')
 const signup=require('./routes/signup')
+const addexpense = require('./routes/addexpense')
 
 app.use(signup)
+app.use(addexpense)
 sequelize
 //.sync({force: true}) //
 .sync()

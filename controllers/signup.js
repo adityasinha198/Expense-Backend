@@ -1,6 +1,7 @@
 const Expenseuser = require("../models/expenseuser")
 const bcrypt = require("bcrypt")
 
+
 exports.postSignUp=async (req,res,next)=>{
     
     const username = req.body.name;
