@@ -26,4 +26,6 @@ const Expenseuser = sequelize.define('expenseuser', {
  
 })
 
+//
+
 module.exports = Expenseuser
