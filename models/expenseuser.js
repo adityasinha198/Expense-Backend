@@ -7,6 +7,7 @@ const Expenseuser = sequelize.define('expenseuser', {
     type: Sequelize.INTEGER,
     autoIncrement:true,
     allowNull: false,
+    primaryKey: true
     
   },
   username: Sequelize.STRING,
@@ -14,7 +15,7 @@ const Expenseuser = sequelize.define('expenseuser', {
     type:Sequelize.STRING   ,
     allowNull: false ,
     unique: true,
-    primaryKey: true
+    
 
   
   },

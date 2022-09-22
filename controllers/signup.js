@@ -1,5 +1,9 @@
 const Expenseuser = require("../models/expenseuser")
 const bcrypt = require("bcrypt")
+const jwt = require("jsonwebtoken")
+
+function gettokenaccess(Id)
+{ return jwt.sign({userid:Id},'aaaada')}
 
 
 exports.postSignUp=async (req,res,next)=>{
@@ -43,7 +47,7 @@ exports.postSignUp=async (req,res,next)=>{
           
         })
         .then(result => {
-          return res.status(406).json({message :"User Created"})
+          return res.status(406).json({message :"User Created",result:result})
       
           console.log('Created ExpenseUser');
       })
@@ -69,8 +73,8 @@ exports.postSignUp=async (req,res,next)=>{
     
       
       if (result == true) {
-        //console.log(password)
-        return res.status(200).json({success:true, message:'User logged in'}) 
+        console.log(user[0])
+        return res.status(200).json({success:true, message:'User logged in',token:gettokenaccess(user[0].id)}) 
   
       }
       else if(!result){
