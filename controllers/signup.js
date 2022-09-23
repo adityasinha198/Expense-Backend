@@ -69,6 +69,7 @@ exports.postSignUp=async (req,res,next)=>{
    
     Expenseuser.findAll({where:{email:email}})
     .then(user=>{
+      console.log("In the program")
       bcrypt.compare(password,user[0].password,(err,result) => {
     
       

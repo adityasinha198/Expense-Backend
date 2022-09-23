@@ -39,7 +39,7 @@ exports.getaddexpense = (req,res,next) => {
   const a = req.user
 
     Addexpense.
-    findAll({where:{expenseuserId:a[0].id}})
+    findAll({where:{expenseuserId:a.id}})
     .then(users => {
         res.json(users)
     })

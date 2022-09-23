@@ -15,6 +15,7 @@ const Expenseuser = sequelize.define('expenseuser', {
     type:Sequelize.STRING   ,
     allowNull: false ,
     unique: true,
+
     
 
   
@@ -23,7 +24,8 @@ const Expenseuser = sequelize.define('expenseuser', {
   password:{
     type:Sequelize.STRING,
     allowNull:false
-  }
+  },
+  ispremiumuser: Sequelize.BOOLEAN
  
 })
 
