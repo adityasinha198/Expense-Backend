@@ -74,9 +74,11 @@ exports.postSignUp=async (req,res,next)=>{
     
       
       if (result == true) {
-        console.log(user[0])
+        console.log(user[0].ispremiumuser)
+        if(user[0].ispremiumuser == true){
+        return res.status(200).json({success:true, message:'User logged in',token:gettokenaccess(user[0].id),ispremiumuser:user[0].ispremiumuser}) 
+        }
         return res.status(200).json({success:true, message:'User logged in',token:gettokenaccess(user[0].id)}) 
-  
       }
       else if(!result){
         return res.status(401).json({success:false, message:'User not authorised'}) 

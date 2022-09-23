@@ -37,6 +37,9 @@ exports.postaddexpense = (req,res,next) => {
 
 exports.getaddexpense = (req,res,next) => {
   const a = req.user
+  console.log(a.ispremiumuser,"Yesssss")
+
+ 
 
     Addexpense.
     findAll({where:{expenseuserId:a.id}})
