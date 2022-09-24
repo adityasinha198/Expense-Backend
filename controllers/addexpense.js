@@ -1,6 +1,7 @@
 const bcrypt = require("bcrypt")
 const Addexpense = require("../models/addexpense")
-const jwt = require("jsonwebtoken")
+const jwt = require("jsonwebtoken");
+const Expenseuser = require("../models/expenseuser");
 
 exports.postaddexpense = (req,res,next) => {
     const amount = req.body.amount;
@@ -38,7 +39,7 @@ exports.postaddexpense = (req,res,next) => {
 exports.getaddexpense = (req,res,next) => {
   const a = req.user
   console.log(a.ispremiumuser,"Yesssss")
-
+  
  
 
     Addexpense.
@@ -77,7 +78,58 @@ exports.deleteExpenses=(req,res,next)=>{
       });
     }
   
+
+    exports.leaderboard = (req,res,next) => {
+      
+
+      let obj = {}
+      
+      const a = req.user
+      if(a.ispremiumuser == true){
+      
+      Addexpense.findAll()
+      .then(users =>{
+        for(let i=0;i<users.length;i++){
+          console.log(users)
+          
+          if(users[i].expenseuserId in obj){
+         obj[users[i].expenseuserId] =  obj[users[i].expenseuserId] + users[i].amount
+        
+           }
+          else{
+            
+            //console.log(a)
+            obj[users[i].expenseuserId] = users[i].amount
+          }
+
+        }
+        
+        console.log(obj)
+        res.json(obj)
+        
+
+
+      })
+      .catch(err => console.log(err))
+    }
+
+    else{
+      res.json("Nothing to show")
+
+    }
+
+
+    }
   
+    exports.showuserboard = (req,res,next) => {
+      const userId=req.params.Id;
+      Addexpense.findAll({where:{expenseuserId:userId}})
+      .then(values =>{
+        res.json(values)
+      })
+      .catch(err => console.log(err))
+      console.log(userId)
+    }
     
    
     
