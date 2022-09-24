@@ -17,12 +17,14 @@ const sequelize = require('./util/database')
 const signup=require('./routes/signup')
 const addexpense = require('./routes/addexpense')
 const purchaseRoutes = require('./routes/purchase')
+const forgetpass = require('./routes/forgetpass')
 
 
 
 app.use(signup)
 app.use(addexpense)
 app.use(purchaseRoutes)
+app.use(forgetpass)
 
 Expenseuser.hasMany(Addexpense)
 Addexpense.belongsTo(Expenseuser)
