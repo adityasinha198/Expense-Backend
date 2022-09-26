@@ -18,6 +18,7 @@ const signup=require('./routes/signup')
 const addexpense = require('./routes/addexpense')
 const purchaseRoutes = require('./routes/purchase')
 const forgetpass = require('./routes/forgetpass')
+const backend = require('./routes/backendreport')
 
 
 
@@ -25,6 +26,7 @@ app.use(signup)
 app.use(addexpense)
 app.use(purchaseRoutes)
 app.use(forgetpass)
+app.use(backend)
 
 Expenseuser.hasMany(Addexpense)
 Addexpense.belongsTo(Expenseuser)

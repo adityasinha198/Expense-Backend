@@ -39,7 +39,7 @@ exports.updateTransactionStatus = async (req, res,next ) => {
         Order.findOne({where : {orderid : order_id}}).then(order => {
             order.update({ paymentid: payment_id, status: 'SUCCESSFUL'})
             .then(() => {
-                req.user.update({ispremiumuser: "Yes"})
+                req.user.update({ispremiumuser: true})
                 return res.status(202).json({sucess: true, message: "Transaction Successful"});
             })
             .catch((err)=> {

@@ -126,6 +126,7 @@ exports.deleteExpenses=(req,res,next)=>{
       Addexpense.findAll({where:{expenseuserId:userId}})
       .then(values =>{
         res.json(values)
+        
       })
       .catch(err => console.log(err))
       console.log(userId)
